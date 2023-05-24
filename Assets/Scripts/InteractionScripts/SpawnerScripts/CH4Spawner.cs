@@ -9,6 +9,8 @@ public class CH4Spawner : MonoBehaviour
     public GameObject CubeColor;
     public GameObject SphereSize;
     public GameObject SphereColor;
+    public GameObject target;
+    public GameObject fire;
     public Button button;
     private Vector3 scaleChange;
     private Vector3 scaleChangeMin;
@@ -16,6 +18,10 @@ public class CH4Spawner : MonoBehaviour
     private float currentQuantitySize;
     private float MovementPerSecond = 0.5f;
     public static float valueFromClass;
+     private Vector3 scaleChangeFireMin;
+    private Vector3 scaleChangeTargetMin;
+    private Vector3 scaleChangeTargetMax;
+    private Vector3 scaleChangeFireMax;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +33,10 @@ public class CH4Spawner : MonoBehaviour
         CubeColor.SetActive(false);
         SphereSize.SetActive(false);
         SphereColor.SetActive(false);
+        scaleChangeTargetMin = new Vector3(0.5f, 0.5f, 0.5f);
+        scaleChangeFireMin = new Vector3(1f, 1f, 1f);
+        scaleChangeTargetMax = new Vector3(2f, 2f, 2f);
+        scaleChangeFireMax = new Vector3(8f, 8f, 8f);
     }
 
     void ProcessMovementSize()
@@ -283,6 +293,8 @@ public class CH4Spawner : MonoBehaviour
         CubeColor.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, currentQuantitySize);
         SphereSize.transform.localScale = Vector3.Lerp(scaleChange, scaleChangeMin, currentQuantitySize);
         SphereColor.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.yellow, currentQuantitySize);
+         target.transform.localScale = Vector3.Lerp(scaleChangeTargetMin, scaleChangeTargetMax, currentQuantitySize);
+        fire.transform.localScale = Vector3.Lerp(scaleChangeFireMin, scaleChangeFireMax, currentQuantitySize);
     }
    public void SpawnObjects()
     {

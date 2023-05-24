@@ -9,7 +9,18 @@ public class CH1Spawner : MonoBehaviour
     public GameObject CubeColor;
     public GameObject SphereSize;
     public GameObject SphereColor;
-    public GameObject targetSize;
+    public GameObject target;
+    public GameObject target2;
+    public GameObject target3;
+    public GameObject fire;
+    public GameObject fireNeast;
+    public GameObject fireDragon;
+    private Vector3 scaleChangeFireDragonMin;
+    private Vector3 scaleChangeFireMin;
+    private Vector3 scaleChangeTargetMin;
+    private Vector3 scaleChangeTargetMax;
+    private Vector3 scaleChangeFireMax;
+    private Vector3 scaleChangeFireDragonMax;
     public Button button;
     private Vector3 scaleChange;
     private Vector3 scaleChangeMin;
@@ -22,6 +33,16 @@ public class CH1Spawner : MonoBehaviour
     {
         scaleChange = new Vector3(1, 1, 1);
         scaleChangeMin = new Vector3(0.2f, 0.2f, 0.2f);
+
+        scaleChangeFireDragonMax = new Vector3(10f, 10f, 10f);
+        scaleChangeTargetMin = new Vector3(0.5f, 0.5f, 0.5f);
+        scaleChangeFireMin = new Vector3(1f, 1f, 1f);
+        scaleChangeTargetMax = new Vector3(2f, 2f, 2f);
+        scaleChangeFireMax = new Vector3(8f, 8f, 8f);
+        scaleChangeFireDragonMin = new Vector3(1f, 1f, 1f);
+
+
+
         currentQuantitySize = 0.5f;
         desiredQuantitySize = currentQuantitySize;
         CubeSize.SetActive(false);
@@ -284,6 +305,13 @@ public class CH1Spawner : MonoBehaviour
         CubeColor.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.green, currentQuantitySize);
         SphereSize.transform.localScale = Vector3.Lerp(scaleChange, scaleChangeMin, currentQuantitySize);
         SphereColor.GetComponent<Renderer>().material.color = Color.Lerp(Color.red, Color.yellow, currentQuantitySize);
+        target.transform.localScale = Vector3.Lerp(scaleChangeTargetMin, scaleChangeTargetMax, currentQuantitySize);
+        fire.transform.localScale = Vector3.Lerp(scaleChangeFireMin, scaleChangeFireMax, currentQuantitySize);
+        target2.transform.localScale = Vector3.Lerp(scaleChangeTargetMin, scaleChangeTargetMax, currentQuantitySize);
+        target3.transform.localScale = Vector3.Lerp(scaleChangeTargetMin, scaleChangeTargetMax, currentQuantitySize);
+       fireDragon.transform.localScale = Vector3.Lerp(scaleChangeFireDragonMin, scaleChangeFireDragonMax, currentQuantitySize);
+        fireNeast.transform.localScale = Vector3.Lerp(scaleChangeFireMin, scaleChangeFireMax, currentQuantitySize);
+
     }
    public void SpawnObjects()
     {

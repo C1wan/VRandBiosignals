@@ -19,8 +19,6 @@ public class CubeSizeChanger : MonoBehaviour
     private Color asd;
     public GameObject targetMoveSpeed;
     public GameObject targetMoving;
-    public GameObject particleScript;
-    public GameObject particleScriptFire;
     private Vector3 scaleChange;
     private Vector3 scaleChangeMin;
     private Vector3 scaleChangeParticleMin;
@@ -28,13 +26,18 @@ public class CubeSizeChanger : MonoBehaviour
     private float desiredQuantitySize;
     private float currentQuantitySize;
     private float MovementPerSecond = 0.5f;
+
+    
+    public GameObject particleScript;
+    public GameObject particleScriptDragon;
+    public GameObject particleScriptFire;
     // Start is called before the first frame update
     void Start()
     {
         scaleChange = new Vector3(1, 1, 1);
         scaleChangeMin = new Vector3(0.2f, 0.2f, 0.2f);
-        scaleChangeParticleMax = new Vector3(5, 5, 5);
-        scaleChangeParticleMin = new Vector3(1, 1, 1);
+        scaleChangeParticleMax = new Vector3(10, 10, 10);
+        scaleChangeParticleMin = new Vector3(3, 3, 3);
         currentQuantitySize = 0.5f;
         desiredQuantitySize = currentQuantitySize;
         colorTarget = targetColor.GetComponent<Renderer>().material.color;
@@ -291,7 +294,7 @@ public class CubeSizeChanger : MonoBehaviour
         targetColor.GetComponent<Renderer>().material.color = Color.Lerp(colorTarget, colorWall, currentQuantitySize);
          particleScript.transform.localScale = Vector3.Lerp(scaleChangeParticleMax, scaleChangeParticleMin, currentQuantitySize);
          particleScriptFire.transform.localScale = Vector3.Lerp(scaleChangeParticleMax, scaleChangeParticleMin, currentQuantitySize);
-        
+        particleScriptDragon.transform.localScale = Vector3.Lerp(scaleChangeParticleMax, scaleChangeParticleMin, currentQuantitySize);
         asd.a = currentQuantitySize;
         
     }
