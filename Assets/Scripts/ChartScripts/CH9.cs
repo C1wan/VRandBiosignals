@@ -1,0 +1,78 @@
+using System.Threading;
+using System.Runtime.Serialization;
+using System.Diagnostics;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using XCharts;
+using System.Reflection;
+using Random = System.Random;
+
+// Class for creating Chart for channel 1
+public class CH9 : MonoBehaviour
+{
+    public static float valueFromClass;
+    float elapsed = 0f;
+    public float INTERVAL = 1f;
+    // Number of how much data can be shown to each graph
+    public int maxCache = 100;
+    private float m_LastTime = 0f;
+    private LineChart chart;
+
+    void Awake()
+    {
+        chart = gameObject.GetComponent<LineChart>();
+        createChart();
+        chart.SetMaxCache(maxCache);
+    }
+
+    // Method which creates the chart -> parameters can be changed and some additions can be made
+    void createChart()
+    {
+        if (chart == null)
+        {
+            chart = gameObject.AddComponent<LineChart>();
+        }
+        chart.title.show = true;
+        chart.title.text = "CH1";
+        chart.title.location.right = -15;
+        chart.title.location.align = Location.Align.CenterRight;
+        chart.theme.backgroundColor = Color.clear;
+        chart.RemoveData();
+        chart.AddSerie(SerieType.Line);
+        chart.theme.serie.lineSymbolSize = 0;
+
+        chart.yAxes[0].minMaxType = Axis.AxisMinMaxType.Custom;
+        chart.yAxes[0].max = 65535;
+
+        chart.theme.title.textColor = Color.black;
+        chart.theme.axis.textColor = Color.black;
+        chart.theme.axis.lineColor = Color.black;
+        chart.theme.axis.tickColor = Color.black;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Gets data from the Hybrid8Test class and adds it to the line of the chart
+    void Update()
+    {
+        valueFromClass = Hybrid8Test.valueCH1;
+        if (Time.realtimeSinceStartup - m_LastTime >= INTERVAL)
+        {
+            Random ra = new Random();
+             int rInt = ra.Next(1000, 66000);
+            m_LastTime = Time.realtimeSinceStartup;
+            chart.AddData(0, rInt);
+           // chart.AddData(0, valueFromClass);
+        }
+        elapsed += Time.deltaTime;
+        if (elapsed >= 1f)
+        {
+            elapsed = elapsed % 1f;
+        }
+    }
+}
