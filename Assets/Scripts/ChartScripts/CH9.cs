@@ -7,6 +7,7 @@ using UnityEngine;
 using XCharts;
 using System.Reflection;
 using Random = System.Random;
+using UnityEngine.UI;
 
 // Class for creating Chart for channel 1
 public class CH9 : MonoBehaviour
@@ -41,14 +42,18 @@ public class CH9 : MonoBehaviour
         chart.RemoveData();
         chart.AddSerie(SerieType.Line);
         chart.theme.serie.lineSymbolSize = 0;
+        chart.theme.serie.lineWidth = 3;
+        chart.theme.colorPalette[0] = Color.white;
+     //   chart.theme.serie.lineStyle = Color.white;
 
+        
+        chart.theme.title.textColor = Color.white;
+        chart.theme.axis.textColor = Color.white;
+        chart.theme.axis.lineColor = Color.white;
+        chart.theme.axis.tickColor = Color.white;
         chart.yAxes[0].minMaxType = Axis.AxisMinMaxType.Custom;
         chart.yAxes[0].max = 65535;
 
-        chart.theme.title.textColor = Color.black;
-        chart.theme.axis.textColor = Color.black;
-        chart.theme.axis.lineColor = Color.black;
-        chart.theme.axis.tickColor = Color.black;
     }
 
     // Start is called before the first frame update
