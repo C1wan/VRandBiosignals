@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Runtime.Serialization;
 using System.Diagnostics;
@@ -20,11 +21,23 @@ public class CH9 : MonoBehaviour
     private float m_LastTime = 0f;
     private LineChart chart;
 
+    [SerializeField]
+    private Color chartColor;
+
+    [SerializeField]
+    private Color lineColor;
+
+    [SerializeField]
+    private float lineWidth;
+
     void Awake()
     {
         chart = gameObject.GetComponent<LineChart>();
         createChart();
         chart.SetMaxCache(maxCache);
+        chartColor = Color.black;
+        lineColor = Color.black;
+        lineWidth = 2;
     }
 
     // Method which creates the chart -> parameters can be changed and some additions can be made
@@ -42,18 +55,16 @@ public class CH9 : MonoBehaviour
         chart.RemoveData();
         chart.AddSerie(SerieType.Line);
         chart.theme.serie.lineSymbolSize = 0;
-        chart.theme.serie.lineWidth = 3;
-        chart.theme.colorPalette[0] = Color.white;
-     //   chart.theme.serie.lineStyle = Color.white;
-
-        
-        chart.theme.title.textColor = Color.white;
-        chart.theme.axis.textColor = Color.white;
-        chart.theme.axis.lineColor = Color.white;
-        chart.theme.axis.tickColor = Color.white;
+        // lineColor
+        chart.theme.colorPalette[0] = lineColor;
+        // chart Color
+        chart.theme.title.textColor = chartColor;
+        chart.theme.axis.textColor = chartColor;
+        chart.theme.axis.lineColor = chartColor;
+        chart.theme.axis.tickColor = chartColor;
         chart.yAxes[0].minMaxType = Axis.AxisMinMaxType.Custom;
         chart.yAxes[0].max = 65535;
-
+        chart.theme.serie.lineWidth = lineWidth;
     }
 
     // Start is called before the first frame update
@@ -69,10 +80,12 @@ public class CH9 : MonoBehaviour
         if (Time.realtimeSinceStartup - m_LastTime >= INTERVAL)
         {
             Random ra = new Random();
-             int rInt = ra.Next(1000, 66000);
+            int rInt = ra.Next(1000, 66000);
             m_LastTime = Time.realtimeSinceStartup;
             chart.AddData(0, rInt);
-           // chart.AddData(0, valueFromClass);
+
+            //chart.theme.serie.lineWidth = lineWidth;
+            // chart.AddData(0, valueFromClass);
         }
         elapsed += Time.deltaTime;
         if (elapsed >= 1f)

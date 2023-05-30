@@ -19,11 +19,26 @@ public class CH1 : MonoBehaviour
     private float m_LastTime = 0f;
     private LineChart chart;
 
+    [SerializeField]
+    private Color chartColor;
+
+    [SerializeField]
+    private Color lineColor;
+
+    [SerializeField]
+    private float lineWidth;
+
+
     void Awake()
     {
+
+
         chart = gameObject.GetComponent<LineChart>();
         createChart();
         chart.SetMaxCache(maxCache);
+        chartColor = Color.black;
+        lineColor = Color.black;
+        lineWidth = 2;
     }
 
     // Method which creates the chart -> parameters can be changed and some additions can be made
@@ -45,10 +60,14 @@ public class CH1 : MonoBehaviour
         chart.yAxes[0].minMaxType = Axis.AxisMinMaxType.Custom;
         chart.yAxes[0].max = 65535;
 
-        chart.theme.title.textColor = Color.black;
-        chart.theme.axis.textColor = Color.black;
-        chart.theme.axis.lineColor = Color.black;
-        chart.theme.axis.tickColor = Color.black;
+         // lineColor
+        chart.theme.colorPalette[0] = lineColor;
+        // chart Color
+        chart.theme.title.textColor = chartColor;
+        chart.theme.axis.textColor = chartColor;
+        chart.theme.axis.lineColor = chartColor;
+        chart.theme.axis.tickColor = chartColor;
+        chart.theme.serie.lineWidth = lineWidth;
     }
 
     // Start is called before the first frame update
