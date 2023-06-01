@@ -111,6 +111,8 @@ public class Hybrid8Test : MonoBehaviour
     // Method called when the "Scan for Devices" button is pressed.
     public void ScanButtonFunction()
     {
+
+         OutputMsgText.text = "Scanning for devices please wait";
         // Search for PLUX devices
         pluxDevManager.GetDetectableDevicesUnity(domains);
 
