@@ -35,7 +35,7 @@ public class CH5Spawner : MonoBehaviour
         SphereColor.SetActive(false);
         scaleChangeTargetMin = new Vector3(0.5f, 0.5f, 0.5f);
         scaleChangeFireMin = new Vector3(1f, 1f, 1f);
-        scaleChangeTargetMax = new Vector3(2f, 2f, 2f);
+        scaleChangeTargetMax = new Vector3(1.5f, 1.5f, 1.5f);
         scaleChangeFireMax = new Vector3(8f, 8f, 8f);
     }
 
