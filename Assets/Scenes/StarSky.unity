@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: chartColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3324696081908160235, guid: 15a3635318d80d542afb42112cfe5b03,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3324696082055165286, guid: 15a3635318d80d542afb42112cfe5b03,
         type: 3}
       propertyPath: lineWidth
