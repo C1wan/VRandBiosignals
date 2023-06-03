@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VRScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/VRSceneNight.unity
+    guid: c2788192ad4cbe64fb2c0b25d361fbd3
+  - enabled: 1
+    path: Assets/Scenes/StarSky.unity
+    guid: 482451b6b2d01ac4999815d3007ea5d1
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: c1797d3e2e183c04e823b897d054f5c8,
       type: 2}
