@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class CH1Spawner : MonoBehaviour
 {
@@ -326,8 +328,11 @@ public class CH1Spawner : MonoBehaviour
     void Update()
     {
         valueFromClass = Hybrid8Test.valueCH1;
+        Random ra = new Random();
+        int rInt = ra.Next(3000, 64000);
         ProcessMovementSize();
-        ChangeCubeSize((int)valueFromClass);
+       ChangeCubeSize((int)valueFromClass);
+       // ChangeCubeSize(rInt);
 
     }
 }

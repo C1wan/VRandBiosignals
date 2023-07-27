@@ -82,11 +82,11 @@ public class CH1 : MonoBehaviour
         valueFromClass = Hybrid8Test.valueCH1;
         if (Time.realtimeSinceStartup - m_LastTime >= INTERVAL)
         {
-            // Random ra = new Random();
-            // int rInt = ra.Next(1000, 66000);
+             //Random ra = new Random();
+             //int rInt = ra.Next(3000, 64000);
             m_LastTime = Time.realtimeSinceStartup;
-            // chart.AddData(0, rInt);
-            chart.AddData(0, valueFromClass);
+           //  chart.AddData(0, rInt);
+           chart.AddData(0, valueFromClass);
         }
         elapsed += Time.deltaTime;
         if (elapsed >= 1f)
